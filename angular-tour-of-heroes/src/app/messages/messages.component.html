@@ -1,0 +1,9 @@
+<!--只有在有消息時才會顯示-->
+<div *ngIf="messageService.messages.length">
+  <h2>Messages</h2>
+  <!--透過event binding把按鈕的click event bind到messageService.clear()-->
+  <button class="clear" (click)="messageService.clear()">
+    clear
+  </button >
+  <div *ngFor="let message of messageService.messages">{{message}}</div>
+</div>
