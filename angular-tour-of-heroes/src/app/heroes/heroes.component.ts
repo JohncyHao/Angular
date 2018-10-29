@@ -15,7 +15,7 @@ export class HeroesComponent implements OnInit {
 
   ////改為一個簡單的declaration(聲明)，聲明一個物件heroes
   heroes :Hero[];
-  selectedHero: Hero;
+  //selectedHero: Hero;
 
    //做了兩件事1.聲明一個私有的heroService屬性 2.把它標記為一個HeroService的注入點(DI)
   constructor(private heroService: HeroService) { }
@@ -24,13 +24,6 @@ export class HeroesComponent implements OnInit {
 
     this.getHeroes();
   }
-
-  //宣告名為hero的屬性其型別為Hero
-  onSelect(hero: Hero): void {
-    //將接收到的資料寫回selectedHero
-    this.selectedHero = hero;
-  }
-
 
   getHeroes():void{
     //透過相依注入(DI)取得英雄列表

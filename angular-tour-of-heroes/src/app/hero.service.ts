@@ -19,11 +19,19 @@ export class HeroService {
   //   return HEROES;
   // }
 
+  //取得10個英雄的方法
   getHeroes():Observable<Hero[]>{
     //當取得heroes後，送出HeroService: fetched heroes訊息
     this.messageService.add('HeroService: fetched heroes');
     //會用到of的原因參考https://stackoverflow.com/questions/47889210/why-we-should-use-rxjs-of-function
     //of (HEROES)會回傳一個Observable<Hero[]>的值，這個值就是模擬的英雄資料
     return of (HEROES);
+  }
+
+  getHero(id:number):Observable<Hero>{
+    //當接收到hero後傳後訊息
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    console.log("id");
+    return of(HEROES.find(hero =>hero.id === id));
   }
 }
