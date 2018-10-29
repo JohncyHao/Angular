@@ -20,10 +20,11 @@ export class HeroDetailComponent implements OnInit {
     private heroService:HeroService,
     //他是Angular的服務，用來與瀏覽器打交道，我們會利用她來導航回上一個view
     private location:Location
-  ) { }
+  ) {console.log(route);}
 
   ngOnInit():void {
     this.getHero();
+
   }
   getHero():void{
     //route.snapshot是一個路由器訊息的靜態快照，取自元件剛剛建立完畢之後
@@ -36,6 +37,10 @@ export class HeroDetailComponent implements OnInit {
   goBack():void{
     //透過以前DI的location服務在瀏覽器的歷史線中後退一步
     this.location.back();
+  }
+  save():void{
+    this.heroService.updateHero(this.hero)
+      .subscribe(()=>this.goBack());
   }
 
 }
