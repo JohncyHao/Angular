@@ -20,7 +20,9 @@ export class HeroDetailComponent implements OnInit {
     private heroService:HeroService,
     //他是Angular的服務，用來與瀏覽器打交道，我們會利用她來導航回上一個view
     private location:Location
-  ) {console.log(route);}
+  ) {
+    //console.log(route);
+  }
 
   ngOnInit():void {
     this.getHero();
@@ -42,5 +44,7 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.updateHero(this.hero)
       .subscribe(()=>this.goBack());
   }
+
+
 
 }
