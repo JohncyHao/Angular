@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { element, by } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -11,4 +12,11 @@ describe('workspace-project App', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Welcome to angular-tour-of-heroes!');
   });
+
+
+
+
+
 });
+
+

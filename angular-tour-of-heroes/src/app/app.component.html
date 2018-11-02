@@ -15,5 +15,8 @@
 
 
 <!--有沒有使用blur的差別在於當滑鼠離開輸入框時會不會自動輸入-->
-<input #box (keyup.enter) = "onEnter(box.value)" (blur)="onEnter(box.value)">
-<p>{{value}}</p>
+<!-- <input #box (keyup.enter) = "onEnter(box.value)" (blur)="onEnter(box.value)">
+<p>{{value}}</p> -->
+
+<h2>Master controls {{names.length}} names</h2>
+  <app-dashboard *ngFor="let name of names" [name]="name"></app-dashboard>
