@@ -20,6 +20,9 @@ export class HeroesComponent implements OnInit {
    //做了兩件事1.聲明一個私有的heroService屬性 2.把它標記為一個HeroService的注入點(DI)
   constructor(private heroService: HeroService) { }
 
+
+
+
   ngOnInit() {
 
     this.getHeroes();
@@ -32,6 +35,8 @@ export class HeroesComponent implements OnInit {
     //該函式把英雄陣列賦值給元件的herors屬性
     this.heroService.getHeroes()
     .subscribe(heroes => this.heroes = heroes);
+
+
   }
 /**
  * 當指定的名子不是空的時候，這個處理器會用這個名子創建一個類似於Hero的對象(只缺少id屬性)，並把他傳給服務的addHero()方法

@@ -1,9 +1,23 @@
-<h1>{{title}}</h1>
+
+<!-- <h1>{{title}}</h1>
+
+
 <nav>
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/heroes">Heroes</a>
-</nav>
+</nav> -->
+
 <!--移除<app-heroes>的原因是只有當使用者導航到這裡時才需要顯示此component，而router-outlet會告訴路由器要在哪裡顯示路由到的view-->
 
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<!-- <router-outlet></router-outlet>
+<app-messages></app-messages> -->
+
+
+
+<ul>
+  <li *ngFor="let item of items;let i=index">
+    {{i}}-{{item.name}}
+  </li>
+</ul>
+
+<button (click)="getItems()">增加資料</button>
