@@ -15,7 +15,7 @@
 
 
 <ul>
-  <li *ngFor="let item of items;let i=index">
+  <li *ngFor="let item of items;trackBy:trackbyFn;let i=index">
     {{i}}-{{item.name}}
   </li>
 </ul>

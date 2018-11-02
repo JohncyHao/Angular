@@ -11,11 +11,15 @@ export class AppComponent implements OnInit {
    items = [];
 
   constructor() {
-    this.items =[{name:'work'},{name:'sport'},{name:'learn'}];
+    this.items =[{ name: 'Work' }, { name: 'Sport' }, { name: 'Learn' }];
   }
 
   ngOnInit(): void {
 
+  }
+
+  trackbyFn(index,item){
+    return index;
   }
 
   getItems(){
