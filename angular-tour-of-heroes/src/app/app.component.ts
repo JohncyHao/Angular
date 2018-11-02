@@ -8,26 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
 
-   items = [];
+  value = '';
 
   constructor() {
-    this.items =[{ name: 'Work' }, { name: 'Sport' }, { name: 'Learn' }];
+
   }
 
   ngOnInit(): void {
 
   }
 
-  trackbyFn(index,item){
-    return index;
-  }
+  onEnter(value: string) { this.value = value; }
 
-  getItems(){
-    this.items = this.getItemsFormServer();
-  }
-
-  getItemsFormServer(){
-    return [{ name: 'Work' }, { name: 'Sport' }, { name: 'Learn' }, { name: 'Class' }, { name: 'Game' }, { name: 'Sleep' }, { name: 'Teach' }];
-  }
 
 }

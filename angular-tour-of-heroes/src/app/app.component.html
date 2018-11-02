@@ -14,10 +14,6 @@
 
 
 
-<ul>
-  <li *ngFor="let item of items;trackBy:trackbyFn;let i=index">
-    {{i}}-{{item.name}}
-  </li>
-</ul>
-
-<button (click)="getItems()">增加資料</button>
+<!--有沒有使用blur的差別在於當滑鼠離開輸入框時會不會自動輸入-->
+<input #box (keyup.enter) = "onEnter(box.value)" (blur)="onEnter(box.value)">
+<p>{{value}}</p>
