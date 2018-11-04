@@ -10,7 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 
@@ -33,7 +33,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     // HttpClientInMemoryWebApiModule module 會攔截http請求
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    //forRoot配置方法接受一個InMemoryDataService class作為參數
+    // forRoot配置方法接受一個InMemoryDataService class作為參數
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )

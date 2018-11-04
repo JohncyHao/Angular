@@ -1,0 +1,17 @@
+<div class="full-screen page-content">
+  <div class="wrapper">
+    <img class="logo-img" src="./assets/img/logo.png" alt="">
+    <div class="text-weapper">
+      <h1 class="title-text">
+        Today
+      </h1>
+    </div>
+    <input type="text" nz-input placeholder="請輸入你最喜歡的使用者名稱" #usernameInput [(ngModel)]="username"  >
+    <button nz-button  [nzType]="'primary'"  (click)="completeSetup()" [disabled]="!usernameInput.value">
+      開始
+    </button>
+    <div class="copy-right">
+      copyright  ©  2018/11/04
+    </div>
+  </div>
+</div>
