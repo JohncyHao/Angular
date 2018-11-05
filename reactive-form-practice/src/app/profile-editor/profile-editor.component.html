@@ -1,36 +1,32 @@
-<h1>透過FormGroup</h1>
-<!--ProfileEditor元件上的onSubmit方法會捕獲profileForm的當前值-->
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
-  <label>First Name: <input type="text" formControlName="firstName"></label>
-  <label>Last Name: <input type="text" formControlName="lastName"></label>
+<div class="fontFam">
+  <h1>透過FormGroup</h1>
+  <!--ProfileEditor元件上的onSubmit方法會捕獲profileForm的當前值-->
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <!--這裡的required是HTML5原生的，其又包含minlength、maxlength等，透過與Angular的組合使用可防止template檢查完後表達式再被修改而導致錯誤-->
+    <label>First Name: <input type="text" formControlName="firstName" required></label>
+    <label>Last Name: <input type="text" formControlName="lastName"></label>
 
-  <div formGroupName="address">
-    <h3>Address</h3>
-    <label>Street: <input type="text" formControlName="street"></label>
-    <label>City: <input type="text" formControlName="city"></label>
-    <label>state: <input type="text" formControlName="state"></label>
-    <label>Zip Code: <input type="text" formControlName="zip"></label>
-  </div>
-  <!--submit是DOM原生的事件，這裡使用disabled在profileForm沒有效時禁用按鈕，但是這個功能需要使用表單驗證的邏輯，所以目前還不可用-->
-  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
-</form>
-<P><button (click)="updateProfile()">Update Profile</button></P>
-<P class="showValue">value: {{profileForm.value | json}}</P>
-<hr>
+    <div formGroupName="address">
+      <h3>Address</h3>
+      <label>Street: <input type="text" formControlName="street"></label>
+      <label>City: <input type="text" formControlName="city"></label>
+      <label>state: <input type="text" formControlName="state"></label>
+      <label>Zip Code: <input type="text" formControlName="zip"></label>
+    </div>
 
+    <div formArrayName="aliases">
+      <h3>Aliases</h3> <button (click)="addAlias()">Add Alias</button>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <div *ngFor="let address of aliases.controls;let i =index">
+        <label>Alias: <input type="text" [formControlName]="i"></label>
+      </div>
+    </div>
+    <!--submit是DOM原生的事件，這裡使用disabled在profileForm沒有效時禁用按鈕，但是這個功能需要使用表單驗證的邏輯，所以目前還不可用-->
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+  <P><button (click)="updateProfile()">Update Profile</button></P>
+  <P class="showValue">value: {{profileForm.value | json}}</P>
+  <!--初始值是invalid，這個狀態會傳到formGroup上(profileform)因此會讓submit的按鈕變成無效的-->
+  <P class="showValue">Form Status: {{profileForm.status}}</P>
+  <hr>
+</div>

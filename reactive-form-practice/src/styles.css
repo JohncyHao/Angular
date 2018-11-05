@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.fontFam{
+  font-family: Microsoft JhengHei;
+  font-weight: bold;
+}
+.showValue{
+  background-color: black;
+  color: white;
+}
+
