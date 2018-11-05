@@ -1,38 +1,64 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
   <h1>個人基本基料</h1>
-  <label>
+  <label >
     姓名：
-    <input type="text" name="name" formControlName="name">
+    <input type="text" name= "name" formControlName="name" >
   </label>
   <div *ngIf="profileForm.get('name').touched &&
           profileForm.get('name').hasError('required')">
-    姓名是必填項
-  </div>
+              姓名是必填項
+      </div>
   <p></p>
-  <label>
-    電話：
-    <input type="text" name="phone" formControlName="phone" required>
-  </label>ex:09xx-xxxxxx
-  <div *ngIf="profileForm.get('phone').invalid ">
-    電話必須輸入數字
-  </div>
-  <p></p>
-  <label>
-    E-mail：
-    <input type="text" formControlName="email">
-  </label>
-  <div *ngIf="profileForm.get('email').invalid ">
-    請輸入E-mail
-  </div>
-  <p></p>
-  <label>
-    生日：
-    <input type="date" min="1898-01-01" max="{{today |date:'yyyy-M-dd'}}" formControlName="date">
-    <h1>{{today |date:'yyyy-M-dd'}}</h1>
+  <label >
+    生日：(西元)
+    <input type="text" formControlName="ydate" >
+    (月份)
+    <input type="text" formControlName="mdate" >
+    (日期)
+    <input type="text" formControlName="ddate" >
+
   </label>
   <p></p>
+  <label >
+      手機：
+      <input type="text" name= "phone" formControlName="phone" >
+    </label>ex:09xx-xxxxxx
+    <div *ngIf="profileForm.get('phone').invalid ">
+              電話必須輸入數字，請重新輸入
+      </div>
+    <p></p>
+    <label >
+      市話：
+      <input type="text" name= "hphone" formControlName="hphone" >
+    </label>ex:04-xxxxxxxxx
+    <div *ngIf="profileForm.get('hphone').invalid ">
+              電話必須輸入數字，請重新輸入
+      </div>
+    <p></p>
+  <label >
+      E-mail：
+      <input type="text" formControlName="email">
+    </label>
+    <div *ngIf="profileForm.get('email').invalid ">
+        請輸入E-mail
+  </div>
+    <p></p>
+    <label >
+      住址：
+      <input type="text" formControlName="address">
+    </label>
+    <div *ngIf="profileForm.get('address').invalid ">
+        請輸入住址
+  </div>
+    <p></p>
 
   <button type="submit" [disabled]="!profileForm.valid">submit</button>
-</form>
+  <!-- {{diagnostic}} -->
+  {{profileForm.value |json}}
 
-<button (click)="reset()">reset</button>
+  </form>
+
+  <button (click)="reset(); profileForm.reset()">reset</button>
+
+

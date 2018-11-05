@@ -1,0 +1,59 @@
+<div class="container">
+  <h1>Hero Form</h1>
+  <div [hidden]="submitted">
+    <!--heroForm變數是一個到NgForm指令的引用，他代表整個表單，Angular會在form標籤上自動建立並附加一個NgForm指令-->
+    <!--NgForm會為form增加一些特性，他會控制帶有ngmodel指令和name屬性的元素，監聽他們的屬性，以及還帶有自己的valid屬性，但這個屬性-->
+    <!--只有在它包含的每個控件都有效時才為真-->
+    <form (ngSubmit)="onSubmit()" #form="ngForm" #heroForm="ngForm">
+      {{diagnostic}}
+      <div class="form-group">
+        <label for="name">Name</label>
+        <!--在這邊我們添加了name屬性(attribute)並設為"name"，用來表示英雄的名子，這個隨便命名都可以。但是當在表單中使用[(ngModel)時必須要定義name屬性-->
+        <!--Angular透過name屬性去註冊formcontrol-->
+        <!--ngModel會告訴我們許多訊息，例如使用者是否碰過這個控件、他的值是否有變化、資料是否變得無效等等-->
+        <!--指令的exportAs屬性告訴Angular如何鏈結模板引用便量到指令。這裡把#name設置為ngModel指令的exportAS屬性設置成ngModel-->
+        <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+        {{model.name}}
+        <!--pristine代表他被顯示在表單中開始，使用者從未修改過他的值-->
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="alterEgo">Alter Ego</label>
+        <input type="text" class="form-control" id="alterEgo" [(ngModel)]="model.alterEgo" name="alterEgo">
+        {{model.alterEgo}}
+      </div>
+
+      <div class="form-group">
+        <label for="power">Hero Power</label>
+        <select class="form-control" id="power" required [(ngModel)]="model.power" name="power">
+          <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Sunmit</button>
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>你提交了以下內容</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9  pull-left">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Alter Ego</div>
+      <div class="col-xs-9 pull-left">{{ model.alterEgo }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Power</div>
+      <div class="col-xs-9 pull-left">{{ model.power }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
+
+
+  <button type="button" class="btn btn-default" (click)="newHero();heroForm.reset()">New Hero</button>
+</div>

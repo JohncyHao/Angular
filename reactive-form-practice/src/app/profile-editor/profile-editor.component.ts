@@ -48,6 +48,7 @@ export class ProfileEditorComponent implements OnInit {
     });
   }
 
+
   get aliases(){
     // 因為回傳的控件類型是AbstractControl，所以必須要為方法提供一個"顯式"的類型宣告來訪問FromArray特有的語法
     return this.profileForm.get('aliases') as FormArray;
