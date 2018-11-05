@@ -1,0 +1,38 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <h1>個人基本基料</h1>
+  <label>
+    姓名：
+    <input type="text" name="name" formControlName="name">
+  </label>
+  <div *ngIf="profileForm.get('name').touched &&
+          profileForm.get('name').hasError('required')">
+    姓名是必填項
+  </div>
+  <p></p>
+  <label>
+    電話：
+    <input type="text" name="phone" formControlName="phone" required>
+  </label>ex:09xx-xxxxxx
+  <div *ngIf="profileForm.get('phone').invalid ">
+    電話必須輸入數字
+  </div>
+  <p></p>
+  <label>
+    E-mail：
+    <input type="text" formControlName="email">
+  </label>
+  <div *ngIf="profileForm.get('email').invalid ">
+    請輸入E-mail
+  </div>
+  <p></p>
+  <label>
+    生日：
+    <input type="date" min="1898-01-01" max="{{today |date:'yyyy-M-dd'}}" formControlName="date">
+    <h1>{{today |date:'yyyy-M-dd'}}</h1>
+  </label>
+  <p></p>
+
+  <button type="submit" [disabled]="!profileForm.valid">submit</button>
+</form>
+
+<button (click)="reset()">reset</button>

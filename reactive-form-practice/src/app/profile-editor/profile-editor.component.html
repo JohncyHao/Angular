@@ -1,0 +1,36 @@
+<h1>透過FormGroup</h1>
+<!--ProfileEditor元件上的onSubmit方法會捕獲profileForm的當前值-->
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+  <label>First Name: <input type="text" formControlName="firstName"></label>
+  <label>Last Name: <input type="text" formControlName="lastName"></label>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+    <label>Street: <input type="text" formControlName="street"></label>
+    <label>City: <input type="text" formControlName="city"></label>
+    <label>state: <input type="text" formControlName="state"></label>
+    <label>Zip Code: <input type="text" formControlName="zip"></label>
+  </div>
+  <!--submit是DOM原生的事件，這裡使用disabled在profileForm沒有效時禁用按鈕，但是這個功能需要使用表單驗證的邏輯，所以目前還不可用-->
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+<P><button (click)="updateProfile()">Update Profile</button></P>
+<P class="showValue">value: {{profileForm.value | json}}</P>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

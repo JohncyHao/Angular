@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
  // Displays 'Mr. IQ', '<no name set>', 'Bombasto'
- names = ['M  r.I Q ', '   ', '  Bombasto  '];
+ names = ['M  r.            I  Q          ', '   ', '  Bom       basto      '];
   value = '';
 
   constructor() {

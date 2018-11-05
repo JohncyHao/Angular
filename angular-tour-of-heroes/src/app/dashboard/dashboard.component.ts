@@ -15,9 +15,10 @@ export class DashboardComponent implements OnInit {
 
 
   @Input()
-  set name(name: string) {
-    console.log((name && name.trim()) || '<no name set>');
-    //console.log(name.trim());
+
+   set name(name: string) {
+
+
 
     // console.log(typeof(name && name.trim()));
 
@@ -28,10 +29,12 @@ export class DashboardComponent implements OnInit {
     // }
 
     this._name = (name && name.trim()) || '<no name set>';
+    console.log(this._name);
 
   }
 
   get name(): string { return this._name; }
+
 /************************************* */
   constructor(private heroService: HeroService) { }
 
