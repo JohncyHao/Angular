@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero';
+import { FormGroup, FormControl } from '@angular/forms';
+import { identityRevealedValidator } from '../shared/identity-revealed.directive';
+
+
 
 
 @Component({
@@ -16,6 +20,15 @@ export class HeroFormComponent implements OnInit {
 
   submitted = false;
 
+
+  /*反應式表單區塊*/
+  heroForm = new FormGroup({
+    'name': new FormControl(),
+    'alterEgo': new FormControl(),
+    'power': new FormControl()
+  }, { validators: identityRevealedValidator });
+
+  /**/
   onSubmit(){
     this.submitted = true;
   }

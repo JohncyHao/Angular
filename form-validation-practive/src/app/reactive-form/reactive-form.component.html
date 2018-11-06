@@ -1,0 +1,16 @@
+<h1>Reactive Form</h1>
+
+<form [formGroup]="heroForm" (ngSubmit)="onSubmit()" >
+  <label for="name">Name: <input type="text" id="name" formControlName="name" required></label>
+  <p [hidden]="name.valid || name.pristine">禁止使用bob或字數小於4</p>
+  <label for="alterEgo" >alterEgo: <input type="text" id="alterEgo" formControlName="alterEgo"></label>
+
+  <label for="power">Power:</label>
+  <select id="power" formControlName="power" required>
+    <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+  </select>
+  <p *ngIf="heroForm.errors?.identityRevealed && (heroForm.touched || heroForm.dirty)">Name cannot match alter ego</p>
+
+
+<button type="submit" [disabled]="!heroForm.valid">Submit</button>
+</form>

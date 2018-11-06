@@ -1,4 +1,4 @@
-import {  ValidatorFn, AbstractControl } from "@angular/forms";
+import {  ValidatorFn, AbstractControl, FormGroup, ValidationErrors } from "@angular/forms";
 
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} | null => {

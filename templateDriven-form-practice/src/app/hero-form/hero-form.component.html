@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Hero Form</h1>
+  <h1>Template驅動表單</h1>
   <div [hidden]="submitted">
     <!--heroForm變數是一個到NgForm指令的引用，他代表整個表單，Angular會在form標籤上自動建立並附加一個NgForm指令-->
     <!--NgForm會為form增加一些特性，他會控制帶有ngmodel指令和name屬性的元素，監聽他們的屬性，以及還帶有自己的valid屬性，但這個屬性-->
@@ -54,7 +54,81 @@
     <br>
     <button class="btn btn-primary" (click)="submitted=false">Edit</button>
   </div>
-
-
   <button type="button" class="btn btn-default" (click)="newHero();heroForm.reset()">New Hero</button>
 </div>
+<hr>
+<hr>
+
+<div class="container">
+
+  <h1>Reavtice表單</h1>
+
+  <form [formGroup]="heroForm" #formDir="ngForm">
+
+    <div [hidden]="formDir.submitted">
+
+      <div class="cross-validation" [class.cross-validation-error]="heroForm.errors?.identityRevealed && (heroForm.touched || heroForm.dirty)">
+        <div class="form-group">
+
+          <label for="name">Name</label>
+          <input id="name" class="form-control"
+                formControlName="name" required >
+
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="alert alert-danger">
+
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="name.errors.forbiddenName">
+              Name cannot be Bob.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="alterEgo">Alter Ego</label>
+          <input id="alterEgo" class="form-control"
+              formControlName="alterEgo"  >
+
+          <div *ngIf="alterEgo.pending">Validating...</div>
+          <div *ngIf="alterEgo.invalid" class="alert alert-danger alter-ego-errors">
+            <div *ngIf="alterEgo.errors?.uniqueAlterEgo">
+              Alter ego is already taken.
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="heroForm.errors?.identityRevealed && (heroForm.touched || heroForm.dirty)" class="cross-validation-error-message alert alert-danger">
+            Name cannot match alter ego.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="power">Hero Power</label>
+        <select id="power" class="form-control"
+            formControlName="power" required >
+          <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+        </select>
+
+        <div *ngIf="power.invalid && power.touched" class="alert alert-danger">
+          <div *ngIf="power.errors.required">Power is required.</div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-default"
+             [disabled]="heroForm.invalid">Submit</button>
+      <button type="button" class="btn btn-default"
+             (click)="formDir.resetForm({})">Reset</button>
+    </div>
+  </form>
+
+  <div class="submitted-message" *ngIf="formDir.submitted">
+    <p>You've submitted your hero, {{ heroForm.value.name }}!</p>
+    <button (click)="formDir.resetForm({})">Add new hero</button>
+  </div>
+</div>
+
