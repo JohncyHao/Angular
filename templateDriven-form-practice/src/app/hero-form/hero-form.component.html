@@ -7,13 +7,14 @@
     <form (ngSubmit)="onSubmit()" #form="ngForm" #heroForm="ngForm">
       {{diagnostic}}
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name" >Name</label>
         <!--在這邊我們添加了name屬性(attribute)並設為"name"，用來表示英雄的名子，這個隨便命名都可以。但是當在表單中使用[(ngModel)時必須要定義name屬性-->
         <!--Angular透過name屬性去註冊formcontrol-->
         <!--ngModel會告訴我們許多訊息，例如使用者是否碰過這個控件、他的值是否有變化、資料是否變得無效等等-->
         <!--指令的exportAs屬性告訴Angular如何鏈結模板引用便量到指令。這裡把#name設置為ngModel指令的exportAS屬性設置成ngModel-->
-        <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+        <input type="text" class="form-control" id="name" required  appForbiddenName="bob" [(ngModel)]="model.name" name="name" #name="ngModel">
         {{model.name}}
+
         <!--pristine代表他被顯示在表單中開始，使用者從未修改過他的值-->
         <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
           Name is required

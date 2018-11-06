@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // FormBuilder服務提供更簡潔的方式去新增表單，Validators提供簡單的驗證功能，會根據驗證結果返回錯誤對象或空值
 // FormArray提供管理任意數量的匿名控制，且可以不用定義key值，因此當你不知道你會有幾個子控件時就可以使用這個
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
+import { forbiddenNameValidator } from '../shared/forbidden-name-directive';
 
 
 
@@ -17,7 +18,7 @@ export class ProfileEditorComponent implements OnInit {
   // 如果我們的控件需要同步或者非同步的驗證器，可以在屬性陣列的第二和第三項提供同步和非同步驗證器
   profileForm = this.fb.group({
     // 要求firstName為必填
-    firstName:['',Validators.required],
+    firstName:['',[Validators.required,forbiddenNameValidator(/bob/i)]],
     lastName:[''],
     address:this.fb.group({
       street:[''],
