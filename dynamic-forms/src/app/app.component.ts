@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from './question.service';
-import {  fromEvent, of } from 'rxjs';
+import {  fromEvent, of ,from} from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -60,7 +60,8 @@ export class AppComponent implements OnInit {
     )
 
     /**pipe */
-    const source = of(1,2,3);
+    // const source = of(1,2,3);
+    const source =from([1,2,3,4]);
 
     const example = source.pipe(map(val => val+10));
 
