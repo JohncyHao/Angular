@@ -35,7 +35,7 @@ function backoff(maxTries, ms) {
 
 
 // http://5be38370d53daf0013250f64.mockapi.io/api/v1/user
-ajax('hbe38370d53daf0013250f64.mockapi.io/api/v1/user')
+ajax('hte38370d53daf0013250f64.mockapi.io/api/v1/user')
   .pipe(backoff(3,1000))
   .subscribe(data => handleData(data));
 
