@@ -1,22 +1,22 @@
 
-<!-- <h1>{{title}}</h1>
+<h1>{{title}}</h1>
 
 
 <nav>
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/heroes">Heroes</a>
-</nav> -->
+</nav>
 
 <!--移除<app-heroes>的原因是只有當使用者導航到這裡時才需要顯示此component，而router-outlet會告訴路由器要在哪裡顯示路由到的view-->
 
-<!-- <router-outlet></router-outlet>
-<app-messages></app-messages> -->
+<router-outlet></router-outlet>
+<app-messages></app-messages>
 
 
 
 <!--有沒有使用blur的差別在於當滑鼠離開輸入框時會不會自動輸入-->
-<!-- <input #box (keyup.enter) = "onEnter(box.value)" (blur)="onEnter(box.value)">
-<p>{{value}}</p> -->
+<input #box (keyup.enter) = "onEnter(box.value)" (blur)="onEnter(box.value)">
+<p>{{value}}</p>
 
-<h2>Master controls {{names.length}} names</h2>
-  <app-dashboard *ngFor="let name of names" [name]="name"></app-dashboard>
+<!-- <h2>Master controls {{names.length}} names</h2>
+  <app-dashboard *ngFor="let name of names" [name]="name"></app-dashboard> -->

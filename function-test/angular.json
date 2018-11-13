@@ -28,6 +28,7 @@
             "scripts": []
           },
           "configurations": {
+
             "production": {
               "fileReplacements": [
                 {
@@ -44,7 +45,14 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "zh-Hant":{
+              "aot":true,
+              "i18nFile": "src/messages.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "zh-Hant"
             }
+
           }
         },
         "serve": {
@@ -55,6 +63,9 @@
           "configurations": {
             "production": {
               "browserTarget": "function-test:build:production"
+            },
+            "zh-Hant": {
+              "browserTarget": "function-test:build:zh-Hant"
             }
           }
         },

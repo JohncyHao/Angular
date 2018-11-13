@@ -23,6 +23,7 @@ import { RequestTimeLogHttpInterceptor } from './RequestTimeLogHttpInterceptor';
   providers: [ {
     provide: HTTP_INTERCEPTORS,
     useClass: RequestTimeLogHttpInterceptor,
+    // 這個multi是用來告訴Angular HTTP_INTERCEPTORS是一個多重的provide token，表示會注入一個多值的陣列，而非單一的值
     multi: true
   }],
   bootstrap: [AppComponent]

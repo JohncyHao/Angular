@@ -9,9 +9,8 @@ import { ajax } from 'rxjs/ajax'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  htmlSnippet = 'Template <script>alert("0wned")</script> <b>Syntax</b>';
   title = 'app';
-
-
 }
 // retryWhen 當發生錯誤實基於自定義的標準來重試
 // range 依次發出給定區間內的數字，在這邊透過這個方式讓下面的pipe執行3次
