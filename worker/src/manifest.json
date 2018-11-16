@@ -1,6 +1,6 @@
 {
-  "name": "service-worker-practice",
-  "short_name": "service-worker-practice",
+  "name": "worker",
+  "short_name": "worker",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
