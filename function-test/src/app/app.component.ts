@@ -9,7 +9,7 @@ import { ajax } from 'rxjs/ajax'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  htmlSnippet = 'Template <script>alert("0wned")</script> <b>Syntax</b>';
+  // htmlSnippet = 'Template <script>alert("0wned")</script> <b>Syntax</b>';
   title = 'app';
 }
 // retryWhen 當發生錯誤實基於自定義的標準來重試
@@ -18,29 +18,43 @@ export class AppComponent {
 // map 對源observable的每個值應用投射函數
 // mergeMap  映射成observable並發出值，mergeMap = map + MergeAll
 // timer 按照給定的時間間隔一次發出
-function backoff(maxTries, ms) {
-  return pipe(
-    retryWhen(attempts => range(1, maxTries)
-      .pipe(
-        zip(attempts, i => i),tap(i => console.log(attempts)),
-        map(i => i * i),tap(i => console.log("2")),
-        mergeMap(i => timer(i * ms)),tap(i => console.log("3")),
-      )
-    ),
-    tap(val => console.log("2"))
-  );
+// function backoff(maxTries, ms) {
+//   return pipe(
+//     retryWhen(attempts => range(1, maxTries)
+//       .pipe(
+//         zip(attempts, i => i),tap(i => console.log(attempts)),
+//         map(i => i * i),tap(i => console.log("2")),
+//         mergeMap(i => timer(i * ms)),tap(i => console.log("3")),
+//       )
+//     ),
+//     tap(val => console.log("2"))
+//   );
+// }
+
+
+
+// // http://5be38370d53daf0013250f64.mockapi.io/api/v1/user
+// ajax('hte38370d53daf0013250f64.mockapi.io/api/v1/user')
+//   .pipe(backoff(3,1000))
+//   .subscribe(data => handleData(data));
+
+// function handleData(data){
+//   console.log(data);
+// }
+
+
+for(var i=0;i<5;i++){
+  console.log(i);
+  setTimeout(() => {
+    console.log('這執行第'+i+'次');
+  }, 10);
 }
 
 
 
-// http://5be38370d53daf0013250f64.mockapi.io/api/v1/user
-ajax('hte38370d53daf0013250f64.mockapi.io/api/v1/user')
-  .pipe(backoff(3,1000))
-  .subscribe(data => handleData(data));
-
-function handleData(data){
-  console.log(data);
+for(let i=0;i<5;i++){
+  console.log(i);
+  setTimeout(() => {
+    console.log('這執行第'+i+'次');
+  }, 10);
 }
-
-
-

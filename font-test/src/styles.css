@@ -1,0 +1,66 @@
+/*參考:https://fonts.google.com/specimen/Noto+Sans+TC?selection.family=Noto+Sans+TC*/
+/*Thin:100 , light:300 , regular:400 , medium:500 , bold:700 , black:900*/
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900');
+
+@font-face{
+  font-family: NewFont;
+  src:url("./assets/I.Ngaan.ttf");
+}
+
+@font-face{
+  font-family:PingFangBold;
+  src:url("./assets/PingFangBold.ttf");
+}
+
+@font-face{
+  font-family: PingFangRegular;
+  src:url("./assets/PingFrancisco-Regular.ttf");
+}
+
+
+.NotoThin {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+}
+.NotoLight{
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+.NotoRegular{
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+.NotoMedium{
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.NotoBold{
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+.NotoBlack{
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+
+.Ngaan{
+  font-family: NewFont;
+  font-size: 20px;
+}
+
+
+.PingFangBold{
+  font-family: PingFangBold;
+  font-size: 20px;
+}
+.PingFangRegular{
+  font-family: PingFangRegular;
+  font-size: 20px;
+}

@@ -19,6 +19,7 @@ export class AppComponent {
      updates.available.subscribe(event=>{
       //  this.update =true;
         //有更新的話就自動更新
+        alert("有更新");
         updates.activateUpdate().then(()=>document.location.reload());
      })
    }
